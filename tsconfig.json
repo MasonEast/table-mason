@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "rootDir": "src",
+        "moduleResolution": "node",
+        "module": "ESNEXT",
+        "target": "es6",
+        "jsx": "preserve",
+        "esModuleInterop": true,
+        "baseUrl": "./",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ],
+            "configs/*": [
+                "src/config/*"
+            ]
+        }
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}
