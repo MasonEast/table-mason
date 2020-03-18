@@ -1,11 +1,10 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import { Button } from 'antd'
-import Table from './table'
+import Examples from './examples'
 
 const App = () => {
-    console.log(11153)
-    return <Table />
+    return <Examples.BaseTable />
 }
 
 ReactDom.render(<App />, document.querySelector('#root'))

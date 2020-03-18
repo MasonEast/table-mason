@@ -1,13 +1,19 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, createContext, useContext } from 'react'
 import { DefaultRecordType, TableComponents, GetComponent, CustomizeComponent } from '@/interface'
 import { getPathValue, mergeObject } from '@/utils/dataTreatingUtil'
-
-
+import Header from '@/Header'
 export interface TableProps<RecordType extends DefaultRecordType> {
     columns?: Array<RecordType>,
     data?: RecordType[],
     components?: TableComponents
 }
+
+export interface TableContextProps<RecordType = DefaultRecordType> {
+    prefixCls?: string;
+    getComponent: GetComponent;
+}
+
+export const TableContext = createContext<TableContextProps>(null)
 
 function Table<RecordType extends DefaultRecordType>(props: TableProps<RecordType>) {
 
@@ -24,16 +30,25 @@ function Table<RecordType extends DefaultRecordType>(props: TableProps<RecordTyp
     );
 
     return (
-        <table>
-            <tr>
-                <th>Month</th>
-                <th>Savings</th>
-            </tr>
-            <tr>
-                <td>January</td>
-                <td>$00</td>
-            </tr>
-        </table>
+        <TableContext.Provider
+            value={{
+                // prefixCls,
+                getComponent,
+            }}
+        >
+            <table>
+                <Header
+                    columns={columns}
+                />
+                <tbody>
+                    <tr>
+                        <td>January</td>
+                        <td>$00</td>
+                    </tr>
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </TableContext.Provider>
     )
 }
 
