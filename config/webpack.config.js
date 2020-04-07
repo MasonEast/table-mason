@@ -9,7 +9,6 @@ const TerserPlugin = require('terser-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 // const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 const ISDEV = process.env.NODE_ENV === 'development'
-console.log(ISDEV)
 
 const getPath = (_path) => {
     return path.resolve(__dirname, _path)
@@ -46,7 +45,6 @@ module.exports = {
                         loader: MiniCssExtractPlugin.loader,    //使用了该loader就不要再用style-loader了
                         options: {                              //配置在开发环境下， css发生变化也可以热更新，方便开发
                             hmr: ISDEV,
-                            reloadAll: true,
                         },
                     },
                     // 'style-loader',
@@ -143,6 +141,11 @@ module.exports = {
         new CopyWebpackPlugin([                         // 拷贝生成的文件到dist目录 这样每次不必手动去cv
             { from: 'config/static', to: 'static' }
         ]),
+
+        new MiniCssExtractPlugin({
+            filename: ISDEV ? '[name].css' : '[name].[hash].css',
+            chunkFilename: ISDEV ? '[id].css' : '[id].[hash].css'
+        }),
     ],
     resolve: {
         alias: {                                        //设置别名

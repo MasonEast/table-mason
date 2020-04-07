@@ -9,7 +9,11 @@ export default function BaseTable() {
                 { className: 'b' },
                 { className: 'c' }
             ]}
-            data={[]}
+            data={[
+                { className: 'a', className2: 'a', className3: 'a', },
+                { className: 'b', className2: 'a', className3: 'a', },
+                { className: 'c', className2: 'a', className3: 'a', }
+            ]}
         />
     )
 }

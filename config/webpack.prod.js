@@ -29,10 +29,7 @@ module.exports = WebpackMerge(webpackConfig, {
             to: path.resolve(__dirname, '../dist')
         }]),
         new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin({
-            filename: ISDEV ? '[name].css' : '[name].[hash].css',
-            chunkFilename: ISDEV ? '[id].css' : '[id].[hash].css'
-        }),
+
     ],
     optimization: {
         minimizer: [

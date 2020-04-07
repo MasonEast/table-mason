@@ -2,6 +2,7 @@ import React, { useCallback, useMemo, createContext, useContext } from 'react'
 import { DefaultRecordType, TableComponents, GetComponent, CustomizeComponent } from '@/interface'
 import { getPathValue, mergeObject } from '@/utils/dataTreatingUtil'
 import Header from '@/Header'
+import Body from '@/Body'
 export interface TableProps<RecordType extends DefaultRecordType> {
     columns?: Array<RecordType>,
     data?: RecordType[],
@@ -40,12 +41,9 @@ function Table<RecordType extends DefaultRecordType>(props: TableProps<RecordTyp
                 <Header
                     columns={columns}
                 />
-                <tbody>
-                    <tr>
-                        <td>January</td>
-                        <td>$00</td>
-                    </tr>
-                </tbody>
+                <Body
+                    rowsData={data}
+                />
                 <tfoot></tfoot>
             </table>
         </TableContext.Provider>
