@@ -1,40 +1,41 @@
-import React from 'react'
-import { ColumnsType, CellType } from '@/interface'
-
+import React, { useContext } from 'react'
+import { ColumnsType, ColumnType, CellType } from '@/interface'
+import { TableContext } from '@/table'
 export interface HeaderProps<RecordType> {
     columns: ColumnsType<RecordType>;
-}
-
-function parseHeaderRows<RecordType>(
-    columns: ColumnsType<RecordType>,
-): CellType<RecordType>[][] {
-    let rows = [[]]
-
-    columns.map(column => rows[0].push(column))
-
-    return rows
+    checkbox: boolean,
+    onSelectionChanged: Function
 }
 
 function Header<RecordType>({
     columns,
+    checkbox,
 }: HeaderProps<RecordType>): React.ReactElement {
 
-    const rows: CellType<RecordType>[][] = React.useMemo(
-        () => parseHeaderRows(columns),
-        [columns],
-    );
+    const { state, dispatch } = useContext(TableContext).tableReducer
+
+    const handleSelection = (e) => {
+        console.log(state)
+        dispatch({ type: 'isSelectAll', data: [] })
+    }
 
     return (
         <thead>
-            {
-                rows.map(row => (
-                    <tr>
-                        {row.map(cell => (
-                            <th>{cell.className}</th>
-                        ))}
-                    </tr>
-                ))
-            }
+            <tr>
+                {
+                    checkbox && <th>
+                        <input
+                            type="checkbox"
+                            onClick={handleSelection}
+                        />
+                    </th>
+                }
+                {
+                    columns.map((item: ColumnType<RecordType>) => {
+                        return <th style={{ width: item.width || 100 }}>{item.name}</th>
+                    })
+                }
+            </tr>
         </thead>
     )
 }

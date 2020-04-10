@@ -60,6 +60,7 @@ export interface CellType<RecordType> {
 }
 interface ColumnSharedType<RecordType> {
     title?: React.ReactNode;
+    name?: String;
     key?: Key;
     className?: string;
     fixed?: FixedType;
@@ -79,19 +80,11 @@ export interface RenderedCell<RecordType> {
 export interface ColumnGroupType<RecordType> extends ColumnSharedType<RecordType> {
     children: ColumnsType<RecordType>;
 }
-export interface ColumnType<RecordType> extends ColumnSharedType<RecordType> {
-    colSpan?: number;
-    dataIndex?: DataIndex;
-    render?: (
-        value: any,
-        record: RecordType,
-        index: number,
-    ) => React.ReactNode | RenderedCell<RecordType>;
-    rowSpan?: number;
-    width?: number | string;
-    onCell?: GetComponentProps<RecordType>;
-    /** @deprecated Please use `onCell` instead */
-    onCellClick?: (record: RecordType, e: React.MouseEvent<HTMLElement>) => void;
+export interface ColumnType<RecordType> {
+    name?: string,
+    field?: string,
+    width?: number,
+    render?: Function
 }
 
 // ================= Customized =================
@@ -99,3 +92,12 @@ export type GetComponentProps<DataType> = (
     data: DataType,
     index?: number,
 ) => React.HTMLAttributes<HTMLElement>;
+
+
+export interface TableReducer<RecordType> {
+    state: Object,
+    dispatch: React.Dispatch<{
+        type: string;
+        data: RecordType[];
+    }>
+}
