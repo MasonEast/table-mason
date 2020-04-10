@@ -1,13 +1,66 @@
-table{
-    border-spacing: 0;
-    width: auto;
-}
+@table-mason: table-mason;
+@text-color : #666;
+@font-size-base : 12px;
+@line-height: 1.5;
+@table-border-color: #e9e9e9;
+@table-head-background-color: #f7f7f7;
 
-td, th{
-    border-bottom: 1px solid #999
-}
+.@{table-mason}{
+    
+    font-size: @font-size-base;
+    color: @text-color;
+    line-height: @line-height;
+    box-sizing: border-box;
+    position: relative;
 
-th{
-    text-align: left;
-    background-color: #ccc;
+    table{
+        border-spacing: 0;
+        width: auto;
+    }
+    
+    td, th{
+        border-bottom: 1px solid #999
+    }
+    
+    th{
+        text-align: left;
+        background-color: #ccc;
+    }
+
+    &-checkbox{
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 18px;
+        margin-right: 10px;
+        position: relative;
+         
+        ::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #fff;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+        }
+         
+        :checked::before {
+            content: "\2713";
+            background-color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            border: 1px solid #7D7D7D;
+            border-radius:4px;
+            color: #7D7D7D;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
 }

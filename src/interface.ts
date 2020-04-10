@@ -84,7 +84,8 @@ export interface ColumnType<RecordType> {
     name?: string,
     field?: string,
     width?: number,
-    render?: Function
+    render?: Function,
+    cid?: number
 }
 
 // ================= Customized =================
@@ -93,11 +94,14 @@ export type GetComponentProps<DataType> = (
     index?: number,
 ) => React.HTMLAttributes<HTMLElement>;
 
-
-export interface TableReducer<RecordType> {
-    state: Object,
+export interface State<T> {
+    selectRows: T[],
+    checkedBox: number[]
+}
+export interface TableReducer<T> {
+    state: State<T>,
     dispatch: React.Dispatch<{
         type: string;
-        data: RecordType[];
+        data?: T[];
     }>
 }

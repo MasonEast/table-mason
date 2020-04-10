@@ -1,65 +1,66 @@
 {
-  "name": "table",
-  "author": "mason",
-  "version": "1.0.0",
-  "description": "A React.js project",
-  "main": "app.js",
-  "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
-    "buildmany": "webpack --config config/webpack.many.config.js",
-    "prestart": "webpack --config config/webpack.dll.config.js",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js --open",
-    "dll": "webpack --config config/webpack.dll.config.js"
-  },
-  "keywords": [
-    "mason",
-    "masoneast",
-    "cli",
-    "cool"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/springHyc/masoneast-cli.git"
-  },
-  "bugs": {
-    "url": "https://github.com/springHyc/masoneast-cli/issues"
-  },
-  "homepage": "https://github.com/springHyc/masoneast-cli#readme",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/plugin-transform-runtime": "^7.7.6",
-    "@babel/preset-env": "^7.7.7",
-    "@babel/preset-react": "^7.7.4",
-    "@babel/preset-typescript": "^7.8.3",
-    "autoprefixer": "^9.7.3",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-import": "^1.13.0",
-    "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^5.1.1",
-    "cross-env": "^6.0.3",
-    "css-loader": "^3.4.0",
-    "happypack": "^5.0.1",
-    "html-webpack-plugin": "^3.2.0",
-    "less": "^3.10.3",
-    "less-loader": "^5.0.0",
-    "mini-css-extract-plugin": "^0.9.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "postcss-loader": "^3.0.0",
-    "style-loader": "^1.1.2",
-    "terser-webpack-plugin": "^2.3.1",
-    "ts-loader": "^6.2.1",
-    "typescript": "^3.8.3",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1",
-    "webpack-merge": "^4.2.2",
-    "webpack-parallel-uglify-plugin": "^1.1.2"
-  },
-  "dependencies": {
-    "antd": "^3.26.5",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
-  }
+    "name": "table",
+    "author": "mason",
+    "version": "1.0.0",
+    "description": "A React.js project",
+    "main": "app.js",
+    "scripts": {
+        "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+        "buildmany": "webpack --config config/webpack.many.config.js",
+        "prestart": "webpack --config config/webpack.dll.config.js",
+        "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js --open",
+        "dll": "webpack --config config/webpack.dll.config.js"
+    },
+    "keywords": [
+        "mason",
+        "masoneast",
+        "cli",
+        "cool"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/springHyc/masoneast-cli.git"
+    },
+    "bugs": {
+        "url": "https://github.com/springHyc/masoneast-cli/issues"
+    },
+    "homepage": "https://github.com/springHyc/masoneast-cli#readme",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "^7.7.7",
+        "@babel/plugin-transform-runtime": "^7.7.6",
+        "@babel/preset-env": "^7.7.7",
+        "@babel/preset-react": "^7.7.4",
+        "@babel/preset-typescript": "^7.8.3",
+        "autoprefixer": "^9.7.3",
+        "babel-loader": "^8.0.6",
+        "babel-plugin-import": "^1.13.0",
+        "clean-webpack-plugin": "^3.0.0",
+        "copy-webpack-plugin": "^5.1.1",
+        "cross-env": "^6.0.3",
+        "css-loader": "^3.4.0",
+        "happypack": "^5.0.1",
+        "html-webpack-plugin": "^3.2.0",
+        "less": "^3.10.3",
+        "less-loader": "^5.0.0",
+        "mini-css-extract-plugin": "^0.9.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
+        "postcss-loader": "^3.0.0",
+        "style-loader": "^1.1.2",
+        "terser-webpack-plugin": "^2.3.1",
+        "ts-loader": "^6.2.1",
+        "typescript": "^3.8.3",
+        "uglifyjs-webpack-plugin": "^2.2.0",
+        "webpack": "^4.41.5",
+        "webpack-cli": "^3.3.10",
+        "webpack-dev-server": "^3.10.1",
+        "webpack-merge": "^4.2.2",
+        "webpack-parallel-uglify-plugin": "^1.1.2"
+    },
+    "dependencies": {
+        "antd": "^3.26.5",
+        "classnames": "^2.2.6",
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0"
+    }
 }

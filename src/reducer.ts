@@ -3,11 +3,17 @@
  * @Date: 2020-04-09 18:22:54
  * @Author: mason
  */
-interface ReducerProps {
-    state: 1
+import { State, ColumnType } from '@/interface'
+
+interface Action<T> {
+    type: string,
+    data: T[]
 }
 
-export default function reducer<RecordType>(state: { selectRows: RecordType[] }, action: { type: string, data: RecordType[] }): { selectRows: RecordType[] } {
+export default function reducer<T>(
+    state: State<T>,
+    action: Action<T>
+): State<T> {
     const { type, data } = action
     console.log(type, data)
 
@@ -15,7 +21,7 @@ export default function reducer<RecordType>(state: { selectRows: RecordType[] },
         case 'select':
             return { ...state, selectRows: data }
         case 'isSelectAll':
-            return { ...state, selectRows: data }
+            return { ...state, selectRows: data, checkedBox: data.map((item: ColumnType<T>) => item.cid) }
         default:
             return { ...state }
     }
