@@ -15,12 +15,12 @@ export default function reducer<T>(
     action: Action<T>
 ): State<T> {
     const { type, data } = action
-    console.log(type, data)
+    console.log('reducer', type, data)
 
     switch (type) {
         case 'select':
             return { ...state, selectRows: data }
-        case 'isSelectAll':
+        case 'rowSelection':
             return { ...state, selectRows: data, checkedBox: data.map((item: ColumnType<T>) => item.cid) }
         default:
             return { ...state }

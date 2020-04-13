@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, createContext, useReducer } from 'react'
+import React, { useCallback, useMemo, createContext, useReducer, useEffect } from 'react'
 import { DefaultRecordType, TableComponents, GetComponent, CustomizeComponent, TableReducer, ColumnType } from '@/interface'
 import { getPathValue, mergeObject } from '@/utils/dataTreatingUtil'
 import Header from '@/Header'
@@ -8,8 +8,8 @@ export interface TableProps<RecordType extends DefaultRecordType> {
     columns?: ColumnType<RecordType>[],
     data?: any[],
     prefixCls?: string,
-    checkbox: boolean,
-    onSelectionChanged: Function
+    showRowId: boolean,
+    onSelectionChang: Function
     components?: TableComponents
 }
 
@@ -24,12 +24,17 @@ export const TableContext = createContext<TableContextProps>(null)
 
 function Table<RecordType extends DefaultRecordType>(props: TableProps<RecordType>) {
 
-    const { columns, data, checkbox = false, onSelectionChanged, prefixCls, components } = props
+    const { columns, data, showRowId = false, onSelectionChang, prefixCls, components } = props
 
     const [state, dispatch] = useReducer(reducer, {
         selectRows: [],
         checkedBox: []
     });
+
+    useEffect(() => {
+        onSelectionChang(state.selectRows)
+    }, [state.selectRows])
+
 
     for (let i = 0, len = data.length; i < len; i++) {
         data[i].cid = i + 1
@@ -55,18 +60,18 @@ function Table<RecordType extends DefaultRecordType>(props: TableProps<RecordTyp
                 className={`${prefixCls}`}
             >
                 <Header
-                    checkbox={checkbox}
+                    showRowId={showRowId}
                     columns={columns}
                     prefixCls={prefixCls}
                     rowsData={data}
-                    onSelectionChanged={onSelectionChanged}
+                    onSelectionChang={onSelectionChang}
                 />
                 <Body
                     rowsData={data}
                     columns={columns}
                     prefixCls={prefixCls}
-                    checkbox={checkbox}
-                    onSelectionChanged={onSelectionChanged}
+                    showRowId={showRowId}
+                    onSelectionChang={onSelectionChang}
                 />
                 <tfoot></tfoot>
             </table>

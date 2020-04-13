@@ -5,16 +5,16 @@ import { Button } from 'antd'
 export default function BaseTable() {
     return (
         <Table
-            onSelectionChanged={(value) => { console.log(value) }}
-            checkbox
+            onSelectionChang={(value) => { console.log(value) }}
+            showRowId={true}
             columns={[
-                { name: 'a', field: 'a', width: 200 },
-                { name: 'b', field: 'b', },
+                { name: 'Name', field: 'name', width: 200 },
+                { name: 'Age', field: 'age', },
                 {
-                    name: 'c',
-                    field: 'c',
+                    name: 'Address',
+                    field: 'address',
                     width: 200,
-                    render: (value) => <h3>{value}</h3>
+                    // render: (value) => <h3>{value}</h3>
                 },
                 {
                     name: '操作',
@@ -23,10 +23,30 @@ export default function BaseTable() {
                 }
             ]}
             data={[
-                { a: 'a', b: 'a', c: 'a', },
-                { a: 'b', b: 'a', c: 'a', },
-                { b: 'a', c: 'a', a: 'e' },
-                { b: 'a', c: 'a', }
+                {
+                    key: '1',
+                    name: 'John Brown',
+                    age: 32,
+                    address: 'New York No. 1 Lake Park',
+                },
+                {
+                    key: '2',
+                    name: 'Jim Green',
+                    age: 42,
+                    address: 'London No. 1 Lake Park',
+                },
+                {
+                    key: '3',
+                    name: 'Joe Black',
+                    age: 32,
+                    address: 'Sidney No. 1 Lake Park',
+                },
+                {
+                    key: '4',
+                    name: 'Jim Red',
+                    age: 32,
+                    address: 'London No. 2 Lake Park',
+                },
             ]}
         />
     )

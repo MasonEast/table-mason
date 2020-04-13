@@ -1,6 +1,6 @@
 @table-mason: table-mason;
 @text-color : #666;
-@font-size-base : 12px;
+@font-size-base : 14px;
 @line-height: 1.5;
 @table-border-color: #e9e9e9;
 @table-head-background-color: #f7f7f7;
@@ -19,13 +19,22 @@
     }
     
     td, th{
-        border-bottom: 1px solid #999
+        border-bottom: 1px solid #f0f0f0;
+        padding: 8px;
     }
     
     th{
         text-align: left;
-        background-color: #ccc;
+        background-color: #fafafa;
+        color: rgba(0,0,0,.85);
+        font-weight: 500;
     }
+
+    // tbody>tr{
+    //     :hover{
+    //         background-color: #ccc;
+    //     }
+    // }
 
     &-checkbox{
         width: 20px;

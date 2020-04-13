@@ -5,16 +5,17 @@ import { useCheckbox } from '@/Hooks/useCheckbox'
 export interface HeaderProps<RecordType> {
     columns: ColumnsType<RecordType>;
     rowsData: Array<Object>,
-    checkbox: boolean,
+    showRowId: boolean,
     prefixCls: string,
-    onSelectionChanged: Function
+    onSelectionChang: Function
 }
 
 function Header<RecordType>({
     columns,
     rowsData,
-    checkbox,
-    prefixCls
+    showRowId,
+    prefixCls,
+    onSelectionChang
 }: HeaderProps<RecordType>): React.ReactElement {
 
     const { state, dispatch } = useContext(TableContext).tableReducer
@@ -30,9 +31,9 @@ function Header<RecordType>({
     const handleSelection = (e) => {
         e.persist()
         if (e.target.checked) {
-            dispatch({ type: 'isSelectAll', data: rowsData })
+            dispatch({ type: 'rowSelection', data: rowsData })
         } else {
-            dispatch({ type: 'isSelectAll', data: [] })
+            dispatch({ type: 'rowSelection', data: [] })
         }
     }
 
@@ -40,7 +41,10 @@ function Header<RecordType>({
         <thead>
             <tr>
                 {
-                    checkbox && <th>
+                    showRowId && <th style={{ width: 25 }}></th>
+                }
+                {
+                    onSelectionChang && <th>
                         <input
                             type="checkbox"
                             ref={checkboxRef}
